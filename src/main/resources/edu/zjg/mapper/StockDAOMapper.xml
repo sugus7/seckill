@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.zjg.dao.StockDAO">
+
+    <select id="checkStock" parameterType="int" resultType="edu.zjg.entity.Stock">
+        select id,name,count,sale,version from stock
+        where id = #{id}
+    </select>
+    <update id="updateSale" parameterType="edu.zjg.entity.Stock">
+        update stock set sale=sale+1,version=version+1 where id=#{id} and version=#{version}
+    </update>
+
+</mapper>
